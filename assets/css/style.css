@@ -10,7 +10,7 @@ button{
 .servant{
 	margin: 0px; 
 	width:192px; 
-	height:272px; 
+	height:auto; 
 	border-bottom:solid black;
 
 
@@ -25,8 +25,8 @@ button{
 }
 
 .text{
-	float:left;
-	display: block;
+	float:right;
+	display: inline;
 	margin:40px;
 	border: solid black;
 	font-weight: : bold;
