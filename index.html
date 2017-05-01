@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <title>RPG game</title>
 
-
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
 	<!-- Boostrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
 
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!-- Javascript -->
@@ -19,53 +17,45 @@
 </head>
 
 <body>
-<div class="row fight">
-<div class="col-md-2 nobuwrap">
-	<button class="card" value="Nobunaga">
-		<img class= "servant" src="assets/images/nobu.png">
-		<div id="nobuhp">400HP</div>
-	</button>
-</div>
-
-<div class="col-md-2 musashi wrap">
-	<button class="card" value="Musashi">
-		<img class= "servant" src="assets/images/musashi.png">
-		<div id="musashihp">250HP</div>
-	</button>
-</div>
-
-<div class="col-md-2 lancerwrap">
-	<button class="card" value="Lancer">
-		<img class= "servant" src="assets/images/lancer.png">
-		<div id="lancerhp">300HP</div>
-	</button>
-</div>
-
-<div class="col-md-2 taigawrap">
-	<button class="card" value="Taiga">
-		<img class= "servant" src="assets/images/taiga.png">
-		<div id="taigahp">40HP</div>
-	</button>
-</div>
-
-
+<div class="row">
 	<div class="text"> Select a your character! 
-		<div style="font-weight: normal; font-size: 10px;">("I recommend Nobu or Musashi")</div>
+		<div style="font-weight: normal; font-size: 10px;">("I recommend Nobu or Musashi") <br> ("Just for god sake not taiga")</div>
+	</div>
+</div>
+
+<div class="row fight">
+	<div class="col-md-2">
+		<button class="card" value="Nobunaga">
+			<img class= "servant" src="assets/images/nobu.png">
+			<div id="nobuhp">400HP</div>
+		</button>
 	</div>
 
+	<div class="col-md-2">
+		<button class="card" value="Musashi">
+			<img class= "servant" src="assets/images/musashi.png">
+			<div id="musashihp">250HP</div>
+		</button>
+	</div>
 
+	<div class="col-md-2">
+		<button class="card" value="Lancer">
+			<img class= "servant" src="assets/images/lancer.png">
+			<div id="lancerhp">300HP</div>
+		</button>
+	</div>
 
+	<div class="col-md-2">
+		<button class="card" value="Taiga">
+			<img class= "servant" src="assets/images/taiga.png">
+			<div id="taigahp">40HP</div>
+		</button>
+	</div>
+</div>
 
 <!-- Space -->
 <div class="row"></div>
+<div class="row select"></div>
 
-
-<div class="row select">
-
-
-
-
-</div>
-
-
+<iframe id="iframe-demo" width="1" height="1" src="https://www.youtube.com/embed/bW5PeZOQPLI?autoplay=0" frameborder="0"></iframe>
 </body>

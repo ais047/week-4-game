@@ -32,3 +32,14 @@ button{
 	font-weight: : bold;
 	font-size: 20px;
 }
+
+.vs{
+	float:left;
+	text-align:center;
+	margin:50px;
+	margin-top:180px;
+	padding: 20px;
+	border: solid black;
+	font-weight: bold;
+	font-size:30px;
+}
