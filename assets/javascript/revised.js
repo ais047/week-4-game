@@ -9,14 +9,14 @@ var musashi={
 	name: "Miyamoto",
 	hp:250,
 	atk:250,
-	counter:100,
+	counter:250,
 	defeated:false
 };
 var lancer={
 	name: "Artoria Pendragon",
 	hp:300,
 	atk:200,
-	counter:100,
+	counter:150,
 	defeated:false
 };
 var taiga={
@@ -55,6 +55,7 @@ $(document).ready(function(){
 		//sets selected character && sets all stats to hero object
 		if(character===" "){
 			console.log("You chose " + this.value);
+
 			character = this.value;
 			if(character === "Taiga"){
 				stupid = true;
@@ -172,7 +173,9 @@ $(document).ready(function(){
 		//defeat and victory conditions
 		if(nobu.defeated && musashi.defeated && lancer.defeated && taiga.defeated){
 			console.log("You win!");
+			
 			$("<div>").addClass("col-md-1 vs").html("You've won!").appendTo(".fight");
+
 
 		}
 
