@@ -1,36 +1,37 @@
-var nobu={
+//Character information and stats.
+const nobu={
 	hp:400,
 	atk:100,
 	counter:50,
 	defeated:false
 };
-var musashi={
+const musashi={
 	hp:250,
 	atk:500,
 	counter:110,
 	defeated:false
 };
-var lancer={
+const lancer={
 	hp:300,
 	atk:100,
 	counter:80,
 	defeated:false
 };
-var taiga={
+const taiga={
 	hp:40,
 	atk:10,
 	counter:10,
 	defeated:false
 };
 
+//Variable holders.
+let character = " ";
+let enemy = " ";
+let stupid = false;
+let hero;
+let opponent;
 
-var character = " ";
-var enemy = " ";
-var stupid = false;
-var hero;
-var opponent;
-
-
+//Onload and onclick functions
 $(document).ready(function(){
 
 	$(".card").on("click", function(){
@@ -179,5 +180,4 @@ $(document).ready(function(){
 			}
 		}
 	});
-
 });
