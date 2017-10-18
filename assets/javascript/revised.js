@@ -1,59 +1,65 @@
-//Character information and stats.
-const nobu={
+var nobu={
+	name: "Oda",
 	hp:400,
+	atk:150,
+	counter:150,
+	defeated:false
+};
+var musashi={
+	name: "Miyamoto",
+	hp:250,
+	atk:250,
+	counter:250,
+	defeated:false
+};
+var lancer={
+	name: "Artoria Pendragon",
+	hp:300,
 	atk:200,
 	counter:150,
 	defeated:false
 };
-const musashi={
-	hp:250,
-	atk:300,
-	counter:100,
-	defeated:false
-};
-const lancer={
-	hp:300,
-	atk:250,
-	counter:100,
-	defeated:false
-};
-const taiga={
+var taiga={
+	name: "??????",
 	hp:40,
 	atk:10,
 	counter:10,
 	defeated:false
 };
 
-//Variable holders.
-let character = " ";
-let enemy = " ";
-let stupid = false;
-let hero;
-let opponent;
 
-//Onload and onclick functions
+var character = " ";
+var enemy = " ";
+var stupid = false;
+var hero;
+var herohp;
+
 $(document).ready(function(){
 
 	$(".card").on("click", function(){
 		console.log(this.value);
+		//sets selector
+	
+		
+
+	var afterbeat = function (ehe){
+		enemy = " ";
+		console.log("beat  " + ehe.value);
+		$(ehe).children(':last-child').html("Defeated");
+		$(ehe).children(':first-child').width("100px");
+		$(ehe).parent().appendTo(".select");
+		$(".vs").remove();
+	}
+
+
 		//sets selected character && sets all stats to hero object
 		if(character===" "){
 			console.log("You chose " + this.value);
+
 			character = this.value;
 			if(character === "Taiga"){
 				stupid = true;
 			}
-			$(".servant").width("100px");
-			$(this).children(':first-child').width("192px");
-			if(stupid){
-				$(this).children(':last-child').prepend(" Why would you even choose this <br>");
-			}
-			else{
-			$(this).children(':last-child').prepend(this.value + "<br>");
-			}
-			$(".text").html("Choose your opponent from below");
-			$(".col-md-2").appendTo(".select");
-			$(this).parent().prependTo(".fight");
 			switch(this.value){
 				case "Nobunaga":
 					hero = nobu;
@@ -82,7 +88,23 @@ $(document).ready(function(){
 				default:
 					hero = nobu;
 			}
+
+			$(".servant").width("100px");
+			$(this).children(':first-child').width("192px");
+			if(stupid){
+				$(this).children(':last-child').prepend(" Why would you even choose this <br>");
+			}
+			else{
+			$(this).children(':last-child').prepend(this.value + "<br>");
+			}
+			$(".text").html("Choose your opponent from below");
+			$(".col-md-2").appendTo(".select");
+			$(this).parent().prependTo(".fight");
+			herohp = $(this).children(':last-child');
 		}
+
+
+
 		//Sets enemy character
 		else if(enemy === " "){
 			if(this.value !== character){
@@ -104,13 +126,9 @@ $(document).ready(function(){
 					nobu.hp -= hero.atk;
 					if(nobu.hp < 1){
 						nobu.defeated = true;
-						enemy = " ";
-						console.log("beat nobu");
-						$(this).children(':last-child').html("Defeated");
-						$(this).children(':first-child').width("100px");
-						$(this).parent().appendTo(".select");
-						$(".vs").remove();
-						return;
+						afterbeat(this);
+						hero.atk += 50;
+						break;
 					}
 					hero.hp -= hero.counter;
 					break;
@@ -119,50 +137,48 @@ $(document).ready(function(){
 					if(musashi.hp < 1){
 						musashi.defeated = true;
 						enemy = " ";
-						console.log("beat musashi");
-						$(this).children(':last-child').html("Defeated");
-						$(this).children(':first-child').width("100px");
-						$(this).parent().appendTo(".select");
-						$(".vs").remove();
-						return;
+						afterbeat(this);
+						hero.atk += 50;
+						break;
 					}
 					hero.hp -= musashi.counter;
 					break;
 				case "Lancer":
 					lancer.hp -= hero.atk;
-					hero.hp -= lancer.counter;
 					if(lancer.hp < 1){
 						lancer.defeated = true;
-						enemy = " ";
-						console.log("beat lancer");
-						$(this).children(':last-child').html("Defeated");
-						$(this).children(':first-child').width("100px");
-						$(this).parent().appendTo(".select");
-						$(".vs").remove();
+						afterbeat(this);
+						hero.atk += 50;
+						break;
 					}
+					hero.hp -= lancer.counter;
 					break;
 				case "Taiga":
 					taiga.hp -= hero.atk;
-					hero.hp -= taiga.counter;
 					if(taiga.hp < 1){
 						taiga.defeated = true;
-						enemy= " ";
-						console.log("beat taiga");
-						$(this).children(':last-child').html("Defeated");
-						$(this).children(':first-child').width("100px");
-						$(this).parent().appendTo(".select");
-						$(".vs").remove();
+						afterbeat(this);
+						hero.atk += 50;
+						break;
 					}
+					hero.hp -= taiga.counter;
 					break;
 				default:
-					opponent = nobu;
+					null;
 			}
 		}
+
+
+
+		//defeat and victory conditions
 		if(nobu.defeated && musashi.defeated && lancer.defeated && taiga.defeated){
 			console.log("You win!");
+			
 			$("<div>").addClass("col-md-1 vs").html("You've won!").appendTo(".fight");
 
+
 		}
+
 		if(hero.hp < 1){
 			if(stupid){
 				$("#taigahp").html("DESTROYED");
@@ -181,5 +197,27 @@ $(document).ready(function(){
 				$(this).parent().appendTo(".select");
 			}
 		}
+
+
+	if(hero.hp > 0){
+		herohp.html(hero.name +  "<br>" + hero.hp);
+	}
+	if(nobu.hp > 0){
+		$(".nobuhp").html(nobu.hp);
+	}
+	if(musashi.hp > 0){
+		$(".musashihp").html(musashi.hp);
+	}
+	if(lancer.hp > 0){
+		$(".lancerhp").html(lancer.hp);
+	}
+	if(taiga.hp > 0){
+		$(".taigahp").html(taiga.hp);
+	}
+
+
 	});
+
+
+
 });
